@@ -1,21 +1,27 @@
 import random
 import sys
+import os
 
-#inputFiles = ['gettysburg.txt', 'dream.txt', 'ironcurtain.txt', 'beaches.txt', 'jfk.txt', 'liberty.txt']
-inputFiles = ['gettysburg.txt', 'dream.txt', 'jfk.txt', 'liberty.txt']
+#filePath = "novels/"
+#filePath = "speeches/"
+filePath = "Shakespeare/"
+inputFiles = os.listdir(filePath)
 
 prefixDict = {}
 
 # Build nested dictionaries 
 for i in range(0, len(inputFiles)):
-    file = open(inputFiles[i], 'r')
+    file = open(filePath + inputFiles[i], 'r')
     fullText = file.read()
     words = fullText.split()
     for word in range(1, len(words) - 1):
         prefix = words[word - 1] + " " +words[word]
 
+        prefix = prefix.strip("[]:()\"\"''")
         prefix = prefix.lower()
+
         nextWord = words[word + 1]
+        nextWord = nextWord.strip("[]:()\"\"''")
         nextWord = nextWord.lower()
                             
         if prefix in prefixDict:
@@ -29,8 +35,8 @@ for i in range(0, len(inputFiles)):
     file.close()
 
 # Control Inputs
-sentenceLength = 15
-currentKey = "This is"
+sentenceLength = 50
+currentKey = "enter tibault"
 
 # Output chain!
 print(currentKey, end=" ")
