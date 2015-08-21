@@ -4,7 +4,9 @@ import os
 
 #filePath = "novels/"
 #filePath = "speeches/"
-filePath = "Shakespeare/"
+#filePath = "Shakespeare/"
+#filePath = "doyle/"
+filePath = "watsky/"
 inputFiles = os.listdir(filePath)
 
 prefixDict = {}
@@ -35,8 +37,8 @@ for i in range(0, len(inputFiles)):
     file.close()
 
 # Control Inputs
-sentenceLength = 50
-currentKey = "enter tibault"
+sentenceLength = 100
+currentKey = ""
 
 # Output chain!
 print(currentKey, end=" ")
